@@ -40,5 +40,7 @@ app.use(cookieParser());
 
 ## To set up a REST API
 ```javascript
-
+app.get(rootAPI, function (req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+});
 ```
