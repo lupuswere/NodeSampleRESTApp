@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Application</title>
+</head>
+<body>
+<form method="get" action="/gethttponly"></form>
+<form method="get" action="/getnothttponly"></form>
+<form method="post" action="/posthttponly"></form>
+<form method="post" action="/postnothttponly"></form>
+<button onclick="document.forms[0].submit()">GET an httponly cookie</button>
+<button onclick="document.forms[1].submit()">GET an NOT httponly cookie</button>
+<button onclick="document.forms[2].submit()">POST and return an httponly cookie</button>
+<button onclick="document.forms[3].submit()">POST and return an NOT httponly cookie</button>
+</body>
+</html>
