@@ -35,47 +35,27 @@ function logRequestForAPI(apiString, request) {
 
 // REST APIs
 var rootAPI = '/';
-var getHttpOnly = 'gethttponly';
-var getNotHttpOnly = 'getnothttponly';
-var postHttpOnly = 'posthttponly';
-var postNotHttpOnly = 'postnothttponly';
+var get = 'get';
+var post = 'post';
 
 app.get(rootAPI, function (req, res) {
     logRequestForAPI(rootAPI, req);
     res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get(rootAPI + getHttpOnly, function (req, res) {
-    logRequestForAPI(getHttpOnly, req);
+app.get(rootAPI + get, function (req, res) {
+    logRequestForAPI(get, req);
     res.writeHead(200, {
-        'Set-Cookie' : 'getHttpOnly=what;HttpOnly;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
+        'Set-Cookie' : 'testCookie=get;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
         'Content-Type' : 'text/plain'
     });
     res.end('Fine\n');
 });
 
-app.get(rootAPI + getNotHttpOnly, function (req, res) {
-    logRequestForAPI(getNotHttpOnly, req);
+app.post(rootAPI + post, function (req, res) {
+    logRequestForAPI(post, req);
     res.writeHead(200, {
-        'Set-Cookie' : 'getNotHttpOnly=what;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
-        'Content-Type' : 'text/plain'
-    });
-    res.end('Fine\n');
-});
-
-app.post(rootAPI + postHttpOnly, function (req, res) {
-    logRequestForAPI(postHttpOnly, req);
-    res.writeHead(200, {
-        'Set-Cookie' : 'postHttpOnly=what;HttpOnly;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
-        'Content-Type' : 'text/plain'
-    });
-    res.end('Fine\n');
-});
-
-app.post(rootAPI + postNotHttpOnly, function (req, res) {
-    logRequestForAPI(postNotHttpOnly, req);
-    res.writeHead(200, {
-        'Set-Cookie' : 'postNotHttpOnly=what;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
+        'Set-Cookie' : 'testCookie=post;expires=' + new Date(new Date().getTime() + 86409000).toUTCString(),
         'Content-Type' : 'text/plain'
     });
     res.end('Fine\n');
